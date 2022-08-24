@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form #countryForm="ngForm" (ngSubmit)="addCountry(countryForm)">
+
+                    <input type="hidden" name="_id" [(ngModel)]="countryService.newCountry._id">
+
+                    <div class="form-group">
+                        <input name="name" type="text" class="form-control" placeholder="Enter name" [(ngModel)]="countryService.newCountry.name">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="country" type="text" class="form-control" placeholder="Enter name of country" [(ngModel)]="countryService.newCountry.country">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="timezone" type="text" class="form-control" placeholder="Enter timezone of country" [(ngModel)]="countryService.newCountry.timezone">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="population" type="number" class="form-control" placeholder="Enter population of country" [(ngModel)]="countryService.newCountry.population">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="longitude" type="number" class="form-control" placeholder="Enter longitude of country" [(ngModel)]="countryService.newCountry.location.longitude">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="latitude" type="number" class="form-control" placeholder="Enter latitude of country" [(ngModel)]="countryService.newCountry.location.latitude">
+                    </div>
+
+                    <div class="container">
+                        <button class="btn btn-primary m-2" (click)="resetForm(countryForm)">Clean</button>
+                        <button class="btn btn-secondary"> Create Country</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Population</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let countries of countryService.countries">
+                    <td>{{countries._id}}</td>
+                    <td>{{countries.name}}</td>
+                    <td>{{countries.country}}</td>
+                    <td>{{countries.population}}</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm" (click)="editCountry(countries)">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteCountry(countries._id)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
