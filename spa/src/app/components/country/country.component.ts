@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CountriesService } from 'src/app/services/countries.service';
 import { NgForm } from '@angular/forms';
 import { Country } from 'src/app/models/country';
-
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
@@ -11,7 +11,10 @@ import { Country } from 'src/app/models/country';
 
 export class CountryComponent implements OnInit {
 
-  constructor(public countryService: CountriesService) { }
+  constructor(
+    public countryService: CountriesService,
+    private authService : AuthService
+  ) { }
 
   ngOnInit(): void {
     this.getCountries();
@@ -58,5 +61,9 @@ export class CountryComponent implements OnInit {
 
   resetForm(form: NgForm){
     form.reset()
+  }
+
+  logout(){
+    this.authService.logout()
   }
 }
