@@ -12,5 +12,6 @@ server.use(express.json())
 server.use(express.urlencoded({extended: false}))
 
 server.use('/api/countries', require('./routes/countries.routes'))
+server.use('/api/users', require('./routes/users.routes'))
 
 module.exports = server
