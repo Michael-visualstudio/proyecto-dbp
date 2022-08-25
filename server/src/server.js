@@ -9,7 +9,7 @@ server.set('port', process.env.PORT || 4000)
 server.use(cors())
 server.use(morgan('dev'))
 server.use(express.json())
-server.use(express.urlencoded({extended: false}))
+server.use(express.urlencoded({ extended: false }))
 
 server.use('/api/countries', require('./routes/countries.routes'))
 server.use('/api/users', require('./routes/users.routes'))
